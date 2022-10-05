@@ -27,7 +27,7 @@ const handleLogin = async (req, res) => {
 
   //Saving refreshToken to database
   const updatedUser = await User.updateOne({ username: dataUser.username }, { $set: { refreshToken: refreshToken } }).exec();
-  res.cookie("jwt", refreshToken, { httpOnly: true, secure: false, maxAge: 24 * 60 * 60 * 1000 });
+  res.cookie("jwt", refreshToken, { httpOnly: true, secure: true, maxAge: 24 * 60 * 60 * 1000 });
   res.json({ accessToken });
 };
 
